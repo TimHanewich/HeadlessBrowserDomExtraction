@@ -26,6 +26,13 @@ const httpTrigger:AzureFunction = async function(con:Context, req:HttpRequest):P
     else
     {
         con.log("URL: " + url);
+        con.log("Getting data...");
+        var content:string = await GetData(url, 5000);
+        con.log("Content received! Length: " + content.length.toString());
+
+        //Return
+        con.log("Returning.");
+        con.res = {"status":200,"body":content};
     }
 }
 
