@@ -26,8 +26,21 @@ const httpTrigger:AzureFunction = async function(con:Context, req:HttpRequest):P
     else
     {
         con.log("URL: " + url);
+
+        //Did they supply a wait time?
+        var wait_time_ms:number = 5000;
+        if (req.query.waittime != null)
+        {
+            con.log("Wait time provided: " + req.query.waittime);
+            wait_time_ms = Number(req.query.waittime);
+        }
+        else
+        {
+            con.log("Wait time not provided. Defaulting to " + wait_time_ms.toString());
+        }
+
         con.log("Getting data...");
-        var content:string = await GetData(url, 5000);
+        var content:string = await GetData(url, wait_time_ms);
         con.log("Content received! Length: " + content.length.toString());
 
         //Return
