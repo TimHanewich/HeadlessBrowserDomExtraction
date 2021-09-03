@@ -3,6 +3,10 @@ import {GetData} from "./tools";
 
 const httpTrigger:AzureFunction = async function(con:Context, req:HttpRequest):Promise<void>
 {
+    //params:
+    //url - url of the page to load and return
+    //waittime - the time in milliseconds to wait for the page to load before getting and returning the DOM.
+
     con.log("Request received!");
     var url:string = req.query.url;
     if (url == null)
