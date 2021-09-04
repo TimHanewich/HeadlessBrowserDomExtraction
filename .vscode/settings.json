@@ -7,3 +7,5 @@
     "azureFunctions.preDeployTask": "npm prune (functions)",
     "azureFunctions.scmDoBuildDuringDeployment": true
 }
+
+//https://anthonychu.ca/post/azure-functions-headless-chromium-puppeteer-playwright/
